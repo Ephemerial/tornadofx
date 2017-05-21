@@ -813,8 +813,8 @@ abstract class UIComponent(viewTitle: String? = "", icon: Node? = null) : Compon
         openWindow(modality = modality, stageStyle = stageStyle, owner = owner)
     }
 
-    fun <T : UIComponent> replaceWith(component: KClass<T>, transition: ViewTransition? = null): Boolean {
-        return replaceWith(find(component, scope), transition)
+    inline fun <reified T : UIComponent> replaceWith(transition: ViewTransition? = null): Boolean {
+        return replaceWith(find(T::class, scope), transition)
     }
 
     /**
